@@ -17,10 +17,11 @@ router.post('/', function(req, res){
   console.log('name', name);
   console.log('hometown', hometown);
   console.log('movie', movie);
-  var personToSave = new Person([{name: name}, {hometown: hometown}, {movie: movie}]);
+  var personToSave = new Person({name: name, hometown: hometown, movie: movie});
   personToSave.save().then(function(){
     console.log('saved a new person');
-    res.send(201);
+    console.log('person =', personToSave);
+    res.sendStatus(201);
   });
 });
 
